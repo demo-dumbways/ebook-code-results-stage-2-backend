@@ -130,6 +130,7 @@ exports.deleteUser = async (req, res) => {
   }
 };
 
+// code here
 exports.userProducts = async (req, res) => {
   try {
     const data = await user.findAll({
