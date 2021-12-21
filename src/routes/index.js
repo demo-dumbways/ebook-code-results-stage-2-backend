@@ -3,7 +3,7 @@ const express = require('express')
 const router = express.Router()
 
 // Controller
-const { addUsers, getUsers, getUser, updateUser, deleteUser, userProducts } = require('../controllers/user')
+const { addUsers, getUsers, getUser, updateUser, deleteUser, getUserProducts } = require('../controllers/user')
 const { getProduct, addProduct } = require('../controllers/product')
 const { getTransactions, addTransaction } = require('../controllers/transaction')
 
@@ -20,6 +20,6 @@ router.post('/product', addProduct)
 router.get('/transactions', getTransactions)
 router.post('/transaction', addTransaction)
 
-router.get('/user-products', userProducts)
+router.get('/user-products', getUserProducts)
 
 module.exports = router

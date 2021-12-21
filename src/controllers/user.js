@@ -1,3 +1,4 @@
+// import product model
 const { user, profile, product } = require("../../models");
 const { addProduct } = require("./product");
 
@@ -131,7 +132,7 @@ exports.deleteUser = async (req, res) => {
 };
 
 // code here
-exports.userProducts = async (req, res) => {
+exports.getUserProducts = async (req, res) => {
   try {
     const data = await user.findAll({
       // where: {
