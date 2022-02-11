@@ -14,12 +14,23 @@ app.use('/fundamental/api/v1/', router);
 
 app.get('/', (req, res) => {
   res.send({
-    message: 'hello',
     db: process.env.DB || 'course-express',
     user: process.env.USER || 'root',
     pw: process.env.PASSWORD || 'root',
-    host: process.env.HOST || 'localhost',
-    port: process.env.PORT || '8889',
+    objt: {
+      host: process.env.HOST || 'localhost',
+      port: process.env.PORT || '8889',
+      dialect: 'mysql',
+      logging: console.log,
+      freezeTableName: true,
+
+      pool: {
+        max: 5,
+        min: 0,
+        acquire: 30000,
+        idle: 10000,
+      },
+    },
   });
 });
 
