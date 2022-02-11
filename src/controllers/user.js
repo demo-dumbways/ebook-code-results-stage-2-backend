@@ -1,6 +1,8 @@
 const db = require('../database/connection');
 const { QueryTypes } = require('sequelize');
 
+const { user } = require('../../models');
+
 exports.addUsers = async (req, res) => {
   try {
     const { email, password, name, status } = req.body;
@@ -25,8 +27,9 @@ exports.addUsers = async (req, res) => {
 
 exports.getUsers = async (req, res) => {
   try {
-    const query = 'SELECT * FROM users';
-    const data = await db.sequelize.query(query, { type: QueryTypes.SELECT });
+    // const query = 'SELECT * FROM users';
+    // const data = await db.sequelize.query(query, { type: QueryTypes.SELECT });
+    const data = await user.findAll();
 
     res.send({
       status: 'success',
