@@ -7,7 +7,7 @@ const router = require('./src/routes');
 const app = express();
 
 const port = process.env.PORT || 5000;
-const db = require('../database/connection');
+const db = require('./src/database/connection');
 
 app.use(express.json());
 
