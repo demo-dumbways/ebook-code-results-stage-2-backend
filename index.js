@@ -13,7 +13,9 @@ app.use(express.json());
 app.use('/fundamental/api/v1/', router);
 
 app.get('/', (req, res) => {
+  const connectionString = `postgresql://${process.env.USER}:${process.env.PASSWORD}@${process.env.HOST}:${process.env.PORT}/${process.env.DB}`;
   res.send({
+    connectionString,
     db: process.env.DB || 'course-express',
     user: process.env.USER || 'root',
     pw: process.env.PASSWORD || 'root',
