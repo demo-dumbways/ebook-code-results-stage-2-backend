@@ -33,6 +33,7 @@ exports.getUsers = async (req, res) => {
 
     res.send({
       status: 'success',
+      message: 'ini sequelize',
       data,
     });
   } catch (error) {
