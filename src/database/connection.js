@@ -21,12 +21,13 @@ const sequelize = new Sequelize(connectionString);
 //     },
 //   }
 // );
-
-try {
-  await sequelize.authenticate();
-  console.log('Connection has been established successfully.');
-} catch (error) {
-  console.error('Unable to connect to the database:', error);
+async function checkConn() {
+  try {
+    await sequelize.authenticate();
+    console.log('Connection has been established successfully.');
+  } catch (error) {
+    console.error('Unable to connect to the database:', error);
+  }
 }
 
 db.sequelize = sequelize;
