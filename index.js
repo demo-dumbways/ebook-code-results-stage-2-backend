@@ -10,4 +10,10 @@ app.use(express.json());
 
 app.use('/fundamental/api/v1/', router);
 
+app.get('/', (req, res) => {
+  res.send({
+    message: 'hello',
+  });
+});
+
 app.listen(port, () => console.log(`Listening on port ${port}!`));
