@@ -27,9 +27,9 @@ exports.addUsers = async (req, res) => {
 
 exports.getUsers = async (req, res) => {
   try {
-    // const query = 'SELECT * FROM users';
-    // const data = await db.sequelize.query(query, { type: QueryTypes.SELECT });
-    const data = await user.findAll();
+    const query = 'SELECT * FROM users';
+    const data = await db.sequelize.query(query, { type: QueryTypes.SELECT });
+    // const data = await user.findAll();
 
     res.send({
       status: 'success',
