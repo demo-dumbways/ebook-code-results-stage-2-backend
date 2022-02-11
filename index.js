@@ -15,7 +15,7 @@ app.use('/fundamental/api/v1/', router);
 
 app.get('/', async (req, res) => {
   try {
-    await db.authenticate();
+    await db.sequelize.authenticate();
     console.log(
       '-------------------------------------------------Connection has been established successfully.'
     );

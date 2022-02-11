@@ -21,21 +21,6 @@ const sequelize = new Sequelize(connectionString);
 //     },
 //   }
 // );
-async function checkConn() {
-  try {
-    await sequelize.authenticate();
-    console.log(
-      '-------------------------------------------------Connection has been established successfully.'
-    );
-  } catch (error) {
-    console.error(
-      '-------------------------------------------------Unable to connect to the database:',
-      error
-    );
-  }
-}
-
-checkConn();
 
 db.sequelize = sequelize;
 
