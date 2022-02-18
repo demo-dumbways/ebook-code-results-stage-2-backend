@@ -5,6 +5,8 @@ const { user } = require("../../models");
 const Joi = require("joi");
 // import bcrypt
 const bcrypt = require("bcrypt");
+//import jsonwebtoken
+const jwt = require("jsonwebtoken");
 
 exports.register = async (req, res) => {
   // our validation schema here
@@ -37,11 +39,16 @@ exports.register = async (req, res) => {
       password: hashedPassword,
     });
 
+    // generate token
+    const SECRET_KEY = 'rahasia'
+    const token = jwt.sign({id: newUser.id}, SECRET_KEY)
+    
     res.status(200).send({
       status: "success...",
       data: {
         name: newUser.name,
         email: newUser.email,
+        token
       },
     });
   } catch (error) {
@@ -90,11 +97,16 @@ exports.login = async (req, res) => {
         message: "credential is invalid",
       });
     }
+
+    // generate token
+    const token = jwt.sign({ id: userExist.id }, process.env.TOKEN_KEY);
+
     res.status(200).send({
       status: "success...",
       data: {
         name: userExist.name,
-        email: userExist.email
+        email: userExist.email,
+        token
       },
     });
   } catch (error) {

@@ -1,35 +1,30 @@
-const express = require("express");
+const express = require('express')
 
-const router = express.Router();
+const router = express.Router()
 
-const {
-  addUsers,
-  getUsers,
-  getUser,
-  updateUser,
-  deleteUser,
-} = require("../controllers/user");
-const { getProduct, addProduct } = require("../controllers/product");
-const {
-  getTransactions,
-  addTransaction,
-} = require("../controllers/transaction");
+// Controller
+const { addUsers, getUsers, getUser, updateUser, deleteUser } = require('../controllers/user')
+const { getProduct, addProduct } = require('../controllers/product')
+const { getTransactions, addTransaction } = require('../controllers/transaction')
+const { register, login } = require('../controllers/auth')
 
-const { register, login } = require("../controllers/auth");
+// Middleware
+const { auth } = require('../middlewares/auth')
 
-router.post("/user", addUsers);
-router.get("/users", getUsers);
-router.get("/user/:id", getUser);
-router.patch("/user/:id", updateUser);
-router.delete("/user/:id", deleteUser);
+// Route
+router.post('/user', addUsers)
+router.get('/users', getUsers)
+router.get('/user/:id', getUser)
+router.patch('/user/:id', updateUser)
+router.delete('/user/:id', deleteUser)
 
-router.get("/products", getProduct);
-router.post("/product", addProduct);
+router.get('/products', getProduct)
+router.post('/product', auth, addProduct)
 
-router.get("/transactions", getTransactions);
-router.post("/transaction", addTransaction);
+router.get('/transactions', getTransactions)
+router.post('/transaction', auth, addTransaction)
 
-router.post("/register", register);
-router.post("/login", login);
+router.post('/register', register)
+router.post('/login', login)
 
-module.exports = router;
+module.exports = router
