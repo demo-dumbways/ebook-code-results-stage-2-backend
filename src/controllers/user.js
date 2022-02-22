@@ -65,3 +65,27 @@ exports.getUser = async (req, res) => {
         })
     }
 }
+
+exports.updateUser = async (req, res) => {
+    try {
+        const { id } = req.params
+        const newdata = req.body
+
+        await user.update(newdata, {
+            where: {
+                id
+            }
+        })
+
+        res.send({
+            status: 'success',
+            message: `Update user id: ${id} finished`,
+            data: newdata
+        })
+    } catch (error) {
+        res.send({
+            status: 'failed',
+            message: 'Server Error'
+        })
+    }
+}
