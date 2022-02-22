@@ -40,3 +40,28 @@ exports.getUsers = async (req, res) => {
         })
     }
 }
+
+exports.getUser = async (req, res) => {
+    try {
+        const user = await user.findOne({
+            where: {
+                id: id
+            },
+            attributes: {
+                exclude: ['password', 'createdAt', 'updatedAt']
+            }
+        })
+
+        res.send({
+            status: 'success',
+            data: {
+                user
+            }
+        })
+    } catch (error) {
+        res.send({
+            status: 'failed',
+            message: 'Server Error'
+        })
+    }
+}
