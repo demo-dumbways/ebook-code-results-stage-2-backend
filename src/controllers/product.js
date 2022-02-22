@@ -1,8 +1,6 @@
-// import models here
 const { product, user } = require('../../models')
 
 exports.getProducts = async (req, res) => {
-  // code here
   try {
     const data = await product.findAll({
       include: {
@@ -31,7 +29,6 @@ exports.getProducts = async (req, res) => {
 };
 
 exports.addProduct = async (req, res) => {
-  // code here
   try {
     const data = req.body
 

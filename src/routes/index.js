@@ -2,9 +2,8 @@ const express = require("express");
 
 const router = express.Router();
 
-// Controller
 const { addUsers, getUsers, getUser, updateUser, deleteUser } = require("../controllers/user");
-// import controller function here
+
 const { getProducts, addProduct } = require('../controllers/product')
 const { getTransactions, addTransaction } = require('../controllers/transaction')
 
