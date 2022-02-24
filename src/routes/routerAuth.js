@@ -14,7 +14,7 @@ const { uploadFile } = require('../middlewares/uploadFile')
 
 // Route
 routerAuth.post('/user', addUsers)
-routerAuth.get('/users', auth, getUsers)
+routerAuth.get('/users', getUsers)
 routerAuth.get('/user/:id', getUser)
 routerAuth.patch('/user/:id', updateUser)
 routerAuth.delete('/user/:id', deleteUser)
