@@ -4,6 +4,8 @@ const express = require('express');
 
 const router = require('./src/routes');
 
+const routerAuth  = require('./src/routes/routerAuth')
+
 const app = express();
 
 const port = process.env.PORT || 5000;
@@ -12,6 +14,9 @@ const db = require('./src/database/connection');
 app.use(express.json());
 
 app.use('/fundamental/api/v1/', router);
+app.use('/auth-and-multer/api/v1/', routerAuth);
+
+app.use('/uploads', express.static('uploads'))
 
 app.get('/', async (req, res) => {
   try {
