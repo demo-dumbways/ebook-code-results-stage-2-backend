@@ -3,8 +3,8 @@ require('dotenv').config();
 const express = require('express');
 
 const router = require('./src/routes');
-
-const routerAuth  = require('./src/routes/routerAuth')
+const routerOrm = require('./src/routes/routerOrm');
+const routerAuth = require('./src/routes/routerAuth')
 
 const app = express();
 
@@ -14,6 +14,7 @@ const db = require('./src/database/connection');
 app.use(express.json());
 
 app.use('/fundamental/api/v1/', router);
+app.use('/orm/api/v1/', routerOrm);
 app.use('/auth-and-multer/api/v1/', routerAuth);
 
 app.use('/uploads', express.static('uploads'))
